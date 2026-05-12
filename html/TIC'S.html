@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>✨ TIC'S Cute Core ✨</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+
+    --pink:#ff8ad8;
+    --blue:#8fd3ff;
+    --purple:#b18cff;
+
+    --text:white;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    min-height:100vh;
+
+    overflow:hidden;
+
+    color:var(--text);
+
+    background:black;
+
+    position:relative;
+}
+
+/* VIDEO */
+
+#bgVideo{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    z-index:-2;
+}
+
+/* OSCURECER VIDEO */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+    135deg,
+    rgba(18,15,31,0.45),
+    rgba(36,21,63,0.45),
+    rgba(63,31,104,0.45));
+
+    backdrop-filter:blur(2px);
+
+    z-index:-1;
+}
+
+/* ESTRELLAS */
+
+body::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+    radial-gradient(white 1px, transparent 1px);
+
+    background-size:35px 35px;
+
+    opacity:0.06;
+
+    pointer-events:none;
+}
+
+/* PANEL */
+
+.panel{
+
+    position:relative;
+
+    z-index:2;
+
+    width:95%;
+
+    height:95vh;
+
+    margin:2.5vh auto;
+
+    padding:25px;
+
+    overflow:auto;
+
+    border-radius:35px;
+
+    background:rgba(255,255,255,0.05);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,0.12);
+
+    box-shadow:
+    0 0 30px rgba(255,138,216,0.12),
+    0 0 80px rgba(177,140,255,0.08);
+}
+
+.panel::-webkit-scrollbar{
+    width:8px;
+}
+
+.panel::-webkit-scrollbar-thumb{
+
+    background:linear-gradient(
+    var(--pink),
+    var(--blue));
+
+    border-radius:20px;
+}
+
+/* TOP */
+
+.topbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+}
+
+.logo{
+
+    font-size:58px;
+
+    font-weight:700;
+
+    letter-spacing:3px;
+
+    background:
+    linear-gradient(
+    90deg,
+    #ff9de1,
+    #8fd3ff,
+    #ffffff,
+    #ffb7e8);
+
+    background-size:300%;
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    animation:shine 6s linear infinite;
+}
+
+@keyframes shine{
+
+    0%{
+        background-position:0%;
+    }
+
+    100%{
+        background-position:300%;
+    }
+}
+
+.top-buttons{
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+}
+
+.top-btn{
+
+    border:none;
+
+    padding:12px 18px;
+
+    border-radius:16px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-weight:600;
+
+    background:
+    linear-gradient(
+    135deg,
+    var(--pink),
+    var(--purple));
+
+    box-shadow:
+    0 0 15px rgba(255,138,216,0.35);
+
+    transition:0.3s;
+}
+
+.top-btn:hover{
+
+    transform:
+    translateY(-3px)
+    scale(1.05);
+}
+
+/* TEXTO */
+
+.descripcion{
+
+    margin-top:30px;
+
+    text-align:center;
+}
+
+.descripcion h2{
+
+    font-size:42px;
+
+    margin-bottom:10px;
+
+    text-shadow:
+    0 0 15px rgba(255,255,255,0.4);
+}
+
+.descripcion p{
+
+    opacity:0.9;
+
+    font-size:17px;
+}
+
+/* CARDS */
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+    margin-top:35px;
+}
+
+.card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:25px;
+
+    border-radius:30px;
+
+    background:
+    linear-gradient(
+    145deg,
+    rgba(255,255,255,0.10),
+    rgba(255,255,255,0.03));
+
+    border:1px solid rgba(255,255,255,0.12);
+
+    backdrop-filter:blur(10px);
+
+    transition:0.45s;
+
+    cursor:pointer;
+}
+
+.card:hover{
+
+    transform:
+    translateY(-10px)
+    scale(1.03);
+
+    box-shadow:
+    0 0 25px rgba(255,143,211,0.25),
+    0 0 45px rgba(143,211,255,0.15);
+}
+
+.card::before{
+
+    content:"♡";
+
+    position:absolute;
+
+    font-size:140px;
+
+    right:-15px;
+
+    top:-45px;
+
+    opacity:0.08;
+
+    color:#ffffff;
+}
+
+.icono{
+
+    width:70px;
+
+    margin-bottom:15px;
+}
+
+.card h3{
+
+    font-size:24px;
+
+    margin-bottom:10px;
+}
+
+.card p{
+
+    opacity:0.85;
+}
+
+/* MUSICA */
+
+.music-btn{
+
+    width:100px;
+
+    height:100px;
+
+    margin:auto;
+
+    margin-top:45px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:42px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #ff8ad8,
+    #b18cff,
+    #8fd3ff);
+
+    background-size:300%;
+
+    animation:musicGlow 6s linear infinite;
+
+    box-shadow:
+    0 0 25px rgba(255,138,216,0.5);
+
+    cursor:pointer;
+
+    transition:0.4s;
+}
+
+.music-btn:hover{
+
+    transform:
+    scale(1.12)
+    rotate(8deg);
+}
+
+@keyframes musicGlow{
+
+    0%{
+        background-position:0%;
+    }
+
+    100%{
+        background-position:300%;
+    }
+}
+
+/* STATS */
+
+.stats{
+
+    margin-top:45px;
+}
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(180px,1fr));
+
+    gap:20px;
+
+    margin-top:20px;
+}
+
+.stat{
+
+    text-align:center;
+
+    padding:25px;
+
+    border-radius:25px;
+
+    background:rgba(255,255,255,0.04);
+
+    border:1px solid rgba(255,255,255,0.1);
+
+    backdrop-filter:blur(8px);
+}
+
+.stat h4{
+
+    font-size:38px;
+
+    background:
+    linear-gradient(
+    90deg,
+    var(--pink),
+    var(--blue));
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+}
+
+/* CURSOR */
+
+#figura{
+
+    width:18px;
+
+    height:18px;
+
+    background:var(--pink);
+
+    border-radius:50%;
+
+    position:absolute;
+
+    pointer-events:none;
+
+    z-index:999;
+
+    box-shadow:
+    0 0 20px var(--pink),
+    0 0 40px var(--pink);
+}
+
+/* ANUNCIO */
+
+#anuncio{
+
+    position:fixed;
+
+    bottom:15px;
+
+    left:-700px;
+
+    padding:15px 30px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,0.12);
+
+    animation:mover 15s linear infinite;
+
+    z-index:999;
+}
+
+@keyframes mover{
+
+    from{
+        left:-700px;
+    }
+
+    to{
+        left:100%;
+    }
+}
+
+/* CORAZONES */
+
+.corazon{
+
+    position:absolute;
+
+    color:rgba(255,255,255,0.25);
+
+    animation:flotar linear infinite;
+
+    pointer-events:none;
+}
+
+@keyframes flotar{
+
+    from{
+        transform:translateY(100vh);
+    }
+
+    to{
+        transform:translateY(-120vh);
+    }
+}
+
+/* ESTRELLAS */
+
+.estrella{
+
+    position:absolute;
+
+    color:rgba(255,255,255,0.4);
+
+    pointer-events:none;
+}
+
+@keyframes parpadear{
+
+    0%{
+        opacity:0.2;
+    }
+
+    50%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0.2;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- VIDEO DE FONDO -->
+
+<video autoplay muted loop id="bgVideo">
+    <source src="video.mp4" type="video/mp4">
+</video>
+
+<div class="panel">
+
+    <div class="topbar">
+
+        <div class="logo">
+        🎀 TIC'S
+        </div>
+
+        <div class="top-buttons">
+
+            <button class="top-btn">
+            🌸 Cute
+            </button>
+
+            <button class="top-btn">
+            👀 <span id="contador">0</span>
+            </button>
+
+            <button class="top-btn"
+            onclick="window.open('https://www.youtube.com/')">
+            🎵 Music
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="descripcion">
+
+        <h2>Cyber Femboy Interface</h2>
+
+        <p>
+        Plataforma pastel aesthetic futurista ✨
+        </p>
+
+    </div>
+
+    <div class="grid">
+
+        <div class="card"
+        onclick="window.open('https://tetris.com/play-tetris')">
+
+            <img class="icono"
+            src="https://cdn-icons-png.flaticon.com/512/686/686589.png">
+
+            <h3>Tetris</h3>
+
+            <p>
+            Modo clásico brillante.
+            </p>
+
+        </div>
+
+        <div class="card"
+        onclick="window.open('https://tetr.io/')">
+
+            <img class="icono"
+            src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png">
+
+            <h3>TETR.IO</h3>
+
+            <p>
+            Competitivo aesthetic.
+            </p>
+
+        </div>
+
+        <div class="card"
+        onclick="window.open('https://rodaegisgraph.onrender.com')">
+
+            <img class="icono"
+            src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png">
+
+            <h3>Detector IA</h3>
+
+            <p>
+            Cute IA detector.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div id="figura"></div>
+
+<div id="anuncio">
+🎀 welcome cutie.exe loaded ✦ pastel mode activated ✨
+</div>
+
+<script>
+
+/* VISITAS */
+
+let visitas = localStorage.getItem("visitas");
+
+if(visitas == null){
+
+    visitas = 1;
+
+}else{
+
+    visitas++;
+}
+
+localStorage.setItem("visitas", visitas);
+
+document.getElementById("contador").innerHTML = visitas;
+
+/* CURSOR */
+
+const figura = document.getElementById("figura");
+
+document.addEventListener("mousemove", function(e){
+
+    figura.style.left = e.pageX + "px";
+
+    figura.style.top = e.pageY + "px";
+});
+
+/* CORAZONES */
+
+for(let i=0;i<25;i++){
+
+    let heart = document.createElement("div");
+
+    heart.classList.add("corazon");
+
+    heart.innerHTML = "♡";
+
+    heart.style.left = Math.random()*100 + "vw";
+
+    heart.style.fontSize =
+    (20 + Math.random()*40) + "px";
+
+    heart.style.animationDuration =
+    (6 + Math.random()*8) + "s";
+
+    document.body.appendChild(heart);
+}
+
+/* ESTRELLAS */
+
+for(let i=0;i<40;i++){
+
+    let star = document.createElement("div");
+
+    star.classList.add("estrella");
+
+    star.innerHTML = "✦";
+
+    star.style.left =
+    Math.random()*100 + "vw";
+
+    star.style.top =
+    Math.random()*100 + "vh";
+
+    star.style.fontSize =
+    (10 + Math.random()*20) + "px";
+
+    star.style.animation =
+    "parpadear " +
+    (2 + Math.random()*4)
+    + "s infinite";
+
+    document.body.appendChild(star);
+}
+
+</script>
+
+</body>
+</html>
